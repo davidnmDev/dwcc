@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana Principal</title>
+    <script type="text/javascript">
+        const inicializar = () => {
+            document.getElementById("abrir-ventana").onclick=crearNueva;
+            document.getElementById("cerrar-ventana").onclick=cerrarNueva;
+            document.getElementById("desplazar-ventana").onclick=desplazarVentana;
+            document.getElementById("aumentar-ventana").onclick=aumentarVentana;
+            document.getElementById("redimensionar-ventana").onclick=redimensionarVentana;
+        }
+
+        let  miVentana;
+
+        const crearNueva = () =>  {
+            miVentana  =  window.open("ventana.html","","height=400,width=800");
+        }
+
+        const cerrarNueva = () =>  {
+            if  (miVentana) {
+                miVentana.close(); miVentana  =  null;
+            }
+        }
+
+        const desplazarVentana = () =>  {
+              
+            if  (miVentana) {
+                miVentana.moveBy(50, 50);
+                miVentana.moveTo(500, 500);
+            }
+        }
+
+        const aumentarVentana = () =>  {
+            if  (miVentana) {
+                miVentana.resizeBy(50, 50);
+            }
+        }
+
+        const redimensionarVentana = () =>  {
+            if  (miVentana) {
+                miVentana.resizeTo(500, 500);
+            }
+        }
+
+    </script>
+</head>
+<body onLoad="inicializar()">
+    <button id="abrir-ventana">Abrir Nueva Ventana</button>
+    <button id="cerrar-ventana">Cerrar Ventana</button>
+    <button id="desplazar-ventana">Desplazar Ventana</button>
+    <button id="aumentar-ventana">Aumentar Tamaño</button>
+    <button id="redimensionar-ventana">Redimensionar Ventana</button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana Emerxente</title>
+</head>
+<body onload="completar()" onBlur="window.self.focus()">
+    <h3>Exemplo de Ventá nova</h3>
+    <p>URL: <span id="url"></span></p>
+    <p>Protocolo: <span id="protocol"></span></p>
+    <p>Navegador: <span id="browser"></span></p>
+    <p id="javaStatus"></p>
+
+    <script>
+        function completar(){
+            // Obtén información necesaria para mostrar en la ventana emergente
+            var url = window.location.href;
+            var protocol = window.location.protocol;
+            var browser = navigator.userAgent;
+            var javaEnabled = navigator.javaEnabled();
+
+            // Muestra la información en la ventana emergente
+            document.getElementById('url').innerText = url;
+            document.getElementById('protocol').innerText = protocol;
+            document.getElementById('browser').innerText = browser;
+            document.getElementById('javaStatus').innerText = 'Java ' + (javaEnabled ? 'está disponible' : 'no está disponible');
+        }
+    </script>
+</body>
+</html>
