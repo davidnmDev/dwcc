@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones con el objeto Date</title>
+</head>
+<body>
+    <script>
+
+        function diasHastaFinalDeCurso() {
+            var hoy = new Date();
+            var finalDeCurso = new Date(2024, 5, 25); 
+            var diasRestantes = Math.ceil((finalDeCurso - hoy) / (1000 * 60 * 60 * 24));
+
+            alert('Quedan ' + diasRestantes + ' días hasta el final de curso (25 de junio).');
+        }
+
+       
+        function aniversarioEnFinDeSemana() {
+            var aniversario = prompt('Introduce tu fecha de aniversario (MM/DD):');
+            var fecha = new Date(aniversario);
+            var anosFinDeSemana = [];
+
+            for (var ano = new Date().getFullYear(); ano <= 2100; ano++) {
+                fecha.setFullYear(ano);
+
+                if (fecha.getDay() === 0 || fecha.getDay() === 6) {
+                    anosFinDeSemana.push(ano);
+                }
+            }
+
+            alert('Tu aniversario caerá en fin de semana en los siguientes años: ' + anosFinDeSemana.join(', '));
+        }
+
+
+        function mostrarFechaEnFormato(formato) {
+            var fecha = new Date();
+            var opciones = {};
+
+            switch (formato) {
+                case 1:
+                    opciones = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                    break;
+                case 2:
+                    opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    break;
+                case 3:
+                    opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    break;
+                default:
+                    alert('Formato no válido.');
+                    return;
+            }
+
+            alert(fecha.toLocaleDateString('es-ES', opciones));
+        }
+
+        function mostrarHoraEnFormato(formato) {
+            var fecha = new Date();
+            var opciones = {};
+
+            switch (formato) {
+                case 1:
+                    opciones = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                    break;
+                case 2:
+                    opciones = { hour: '2-digit', minute: '2-digit', hour12: true };
+                    break;
+                default:
+                    alert('Formato no válido.');
+                    return;
+            }
+
+            alert(fecha.toLocaleTimeString('es-ES', opciones));
+        }
+
+        diasHastaFinalDeCurso() 
+
+        aniversarioEnFinDeSemana() 
+
+        var opcionFecha = parseInt(prompt('Selecciona el formato de fecha:\n1. 17/02/2016\n2. Mércores, 17 de febreiro de 2016\n3. Wednesday, February 17, 2016'));
+        mostrarFechaEnFormato(opcionFecha);
+
+        var opcionHora = parseInt(prompt('Selecciona el formato de hora:\n1. 14:35:07\n2. 02:35 PM ou 02:35 AM'));
+        mostrarHoraEnFormato(opcionHora);
+
+    </script>
+</body>
+</html>
