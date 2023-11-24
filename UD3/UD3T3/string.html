@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones con el objeto String</title>
+</head>
+<body>
+    <script>
+        var nombreCompleto = prompt('Introduce tu nombre y apellidos:');
+        
+        function mostrarInformacionNombre(apellidos) {
+            var tamanoNombre = nombreCompleto.split(' ')[0].length;
+            var tamanoApellidos = apellidos.length;
+
+            var tamanoSinEspaciosNombre = nombreCompleto.split(' ')[0].replace(/\s/g, '').length;
+            var tamanoSinEspaciosApellidos = apellidos.replace(/\s/g, '').length;
+
+            var nombreMinusculas = nombreCompleto.toLowerCase();
+            var nombreMayusculas = nombreCompleto.toUpperCase();
+            var apellidosMinusculas = apellidos.toLowerCase();
+            var apellidosMayusculas = apellidos.toUpperCase();
+
+            var partesNombre = nombreCompleto.split(' ');
+            var nombre = partesNombre[0];
+            var apellido1 = partesNombre[1];
+            var apellido2 = partesNombre[2];
+            var usuarioPropuesto = nombre.toLowerCase() + apellido1.charAt(0).toUpperCase() + apellido2.charAt(0).toUpperCase();
+
+            alert(
+                'Tamaño del nombre: ' + tamanoNombre +
+                '\nTamaño de los apellidos: ' + tamanoApellidos +
+                '\nTamaño del nombre sin espacios: ' + tamanoSinEspaciosNombre +
+                '\nTamaño de los apellidos sin espacios: ' + tamanoSinEspaciosApellidos +
+                '\nNombre en minúsculas: ' + nombreMinusculas +
+                '\nNombre en mayúsculas: ' + nombreMayusculas +
+                '\nApellidos en minúsculas: ' + apellidosMinusculas +
+                '\nApellidos en mayúsculas: ' + apellidosMayusculas +
+                '\nNombre: ' + nombre +
+                '\nApellido1: ' + apellido1 +
+                '\nApellido2: ' + apellido2 +
+                '\nNombre de usuario propuesto: ' + usuarioPropuesto
+            );
+        }
+
+        function comprobarContrasena(contrasena) {
+            var longitudValida = contrasena.length >= 8 && contrasena.length <= 16;
+            var tieneMayuscula = /[A-Z]/.test(contrasena);
+            var tieneMinuscula = /[a-z]/.test(contrasena);
+            var tieneNumero = /\d/.test(contrasena);
+            var tieneCaracterEspecial = /[_\-@#$%&]/.test(contrasena);
+
+            if (longitudValida && tieneMayuscula && tieneMinuscula && tieneNumero && tieneCaracterEspecial) {
+                alert('La contraseña cumple con todas las premisas.');
+            } else {
+                alert('La contraseña no cumple con alguna de las premisas:\n' +
+                    'Entre 8 y 16 caracteres.\n' +
+                    'Alguna mayúscula.\n' +
+                    'Alguna minúscula.\n' +
+                    'Algún número.\n' +
+                    'Algún carácter especial (_,-,@,#,$,%,&,...)'
+                );
+            }
+        }
+
+        mostrarInformacionNombre(nombreCompleto);
+
+        var contrasenaUsuario = prompt('Introduce tu contraseña:');
+        comprobarContrasena(contrasenaUsuario);
+    </script>
+</body>
+</html>
