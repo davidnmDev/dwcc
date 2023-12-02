@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo</title>
+</head>
+<body>
+  <script>
+        var arrayPaises =  new Array("Alemania", "Bélgica", "Croacia", "Dinamarca", "España", "Francia", "Irlanda", "Austria");
+        function consultarPosicion() {
+            const posicion = prompt("Ingrese una posición:");
+            const resultado = mostrarElementoEnPosicion(parseInt(posicion, 10));
+
+            alert(`Resultado: ${resultado}`);
+        }
+
+        function consultarPosicionPorPais() {
+            const pais = prompt("Ingrese un pais:");
+            const resultado = mostrarPosicionElemento(pais);
+        
+            alert(`Resultado: ${resultado}`);
+        }
+
+        function consultarSegmento() {
+            const pos1 = prompt("Ingrese una posición:");
+            const pos2 = prompt("Ingrese otra posición:");
+            const resultado = mostrarElementosEntrePosiciones(pos1, pos2);
+        1
+            alert(`Resultado: ${resultado}`);
+        }
+        
+        consultarPosicion();
+        consultarPosicionPorPais();
+        consultarSegmento();
+
+
+
+        //AUX
+
+        function mostrarElementoEnPosicion(posicion) {
+            if (posicion >= 0 && posicion < arrayPaises.length) {
+                return "Elemento en la posición" +  posicion + ": " + arrayPaises[posicion];
+            } else {
+                return "La posición indicada no es válida.";
+            }
+        }
+
+        function mostrarPosicionElemento(elemento) {
+            let posicion = arrayPaises.indexOf(elemento);
+            if (posicion !== -1) {
+               return "Posición de" + elemento + ": " + posicion;
+            } else {
+                return elemento + " no se encuentra en el array.";
+            }
+        }
+
+        function mostrarElementosEntrePosiciones(posicionInicio, posicionFin) {
+            if (
+                posicionInicio >= 0 && posicionInicio < arrayPaises.length &&
+                posicionFin >= 0 && posicionFin < arrayPaises.length &&
+                posicionInicio <= posicionFin
+            ) {
+                let elementosEntrePosiciones = arrayPaises.slice(posicionInicio, posicionFin);
+                return "Elementos entre las posiciones " + posicionInicio + "y" + posicionFin + ": " + elementosEntrePosiciones;
+            }
+            else {
+                return "Las posiciones indicadas no son válidas.";
+            }
+        }
+
+
+  </script>
+</body>
+</html>
